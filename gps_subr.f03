@@ -51,6 +51,7 @@ subroutine coord_sp(Toe,WN,ec,A0_5,Omega_0,i_0,w,M_0,delta_n,Omega_vel,IDOT,C_uc
 
 
 	n_0 = sqrt(mu/(A0_5)**6)
+    write(*,*) "1. n_0 = ", n_0
 
 	t = t_obs - P/c - Toe
 	if ( t > 302400 ) then 
@@ -58,33 +59,52 @@ subroutine coord_sp(Toe,WN,ec,A0_5,Omega_0,i_0,w,M_0,delta_n,Omega_vel,IDOT,C_uc
 	else if ( t < -302400 ) then
 		t = t + 604800
 	endif
+    write(*,*) "3. t = ", t
 
 	n = n_0 + delta_n
+    write(*,*) "4. n = ", t
 
 	M = M_0 + n*t
+    write(*,*) "5. M = ", t
 
 	call E_calc(M, ec, E)
+    write(*,*) "6. E = ", E
+
 	call nu_calc(ec, E, nu)
+    write(*,*) "7. nu = ", nu
 
 	fi = w + nu
+    write(*,*) "8. fi = ", fi
 
 
 	delta_u = C_us*sin(2*fi) + C_uc*cos(2*fi)
 	delta_r = C_rs*sin(2*fi) + C_rc*cos(2*fi)
 	delta_i = C_is*sin(2*fi) + C_ic*cos(2*fi)
+    write(*,*) "9. delta_u  = ", delta_u
+    write(*,*) "9. delta_r  = ", delta_r
+    write(*,*) "9. delta_i  = ", delta_i
 
 	u = fi + delta_u
 	r = A0_5**2*(1 - ec*cos(E)) + delta_r
 	i = i_0 + delta_i + IDOT*t
+    write(*,*) "10. u  = ", u
+    write(*,*) "10. r  = ", r
+    write(*,*) "10. i  = ", i
 
 	X_orb = r*cos(u)
 	Y_orb = r*sin(u)
+    write(*,*) "11. X_orb  = ", X_orb
+    write(*,*) "11. Y_orb  = ", Y_orb
 
 	Omega = Omega_0 + t*(Omega_vel - Omega_vel_e) - Toe*Omega_vel_e
+    write(*,*) "12. Omega  = ", Omega
 
 	X = X_orb*cos(Omega) - Y_orb*cos(i)*sin(Omega)
 	Y = X_orb*sin(Omega) + Y_orb*cos(i)*cos(Omega)
 	Z = Y_orb*sin(i)
+    write(*,*) "13. X  = ", X
+    write(*,*) "13. Y  = ", Y
+    write(*,*) "13. Z  = ", Z
 
 endsubroutine coord_sp
 

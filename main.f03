@@ -36,7 +36,6 @@ program main_gps
 	
 	!---вызов процедуры, опр. коорд. спутника в земной СК
 	call coord_sp(Toe,WN,ec,A0_5,Omega_0,i_0,w,M_0,delta_n,Omega_vel,IDOT,C_uc,C_us,C_rc,C_rs,C_ic,C_is,P,t_obs,X,Y,Z)
-	write(*,*) X, Y, Z
 
 	!---определение координат места и поправки часов
 	read(10,*) mX(:)
@@ -48,11 +47,14 @@ program main_gps
 	call geo_coord(mX, mY, mZ, mP_0, mt, lon, lat, dt)
 
 	k=180d0/(4d0*atan(1.d0))
-	write(*,*) lon*k, lat*k, dt
+
+!	write(*,*) lon*k, lat*k, dt
+	write(*,*) "----------------------------------------"
+	write(*,*) "Поправка часов = ", dt
 	call rad_to_deg(lon, ln_DEG, ln_M, ln_SEC)
 	call rad_to_deg(lat, lt_DEG, lt_M, lt_SEC)
-	write(*,*) ' Широта ',lt_DEG,' градусов ',lt_M,' минут ',lt_SEC,' секунд,'
-	write(*,*) ' Долгота ',ln_DEG,' градусов ',ln_M,' минут ',ln_SEC,' секунд,'
+	write(*,*) "Широта ",lt_DEG," градусов ",lt_M," минут ",lt_SEC," секунд"
+	write(*,*) "Долгота ",ln_DEG," градусов ",ln_M," минут ",ln_SEC," секунд"
 
 end
 
