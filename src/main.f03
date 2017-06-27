@@ -27,10 +27,10 @@ program main_gps
     !--5стр---i_0----C_rc----w--------Omega_vel--------------------
     !--6стр---IDOT---****----WN---------****-----------------------
     
-    open(unit=21, file='6_ef.txt')
-    open(unit=22, file='17_ef.txt')
-    open(unit=23, file='19_ef.txt')
-    open(unit=24, file='24_ef.txt')
+    open(unit=21, file='./data/6_ef.txt')
+    open(unit=22, file='./data/17_ef.txt')
+    open(unit=23, file='./data/19_ef.txt')
+    open(unit=24, file='./data/24_ef.txt')
 
     do i = 1, 4
         write(*,*) "Результаты № ", i
