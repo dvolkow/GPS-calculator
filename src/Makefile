@@ -4,7 +4,7 @@ swdk := $(addsuffix /*.o,$(dirl))   #--добавление пути к файл
 wwdk := $(addsuffix /*.f03,$(dirl))
 comp := gfortran  #--компилятор
 opt  := -o #--опция компилятора для исполняемой программы
-op   := -O2 -ffree-line-length-none      #--параметры отпимизации
+op   := -O2 -ffree-line-length-none      #--параметры оптимизации
 obh  := -c        #--опция компилятора для объектных модулей
 #-правило по умолчанию
 all: $(patsubst %.f03,%.o,$(wildcard *.f03)) $(patsubst %.f03,%.o,$(notdir $(wildcard $(wwdk))))
