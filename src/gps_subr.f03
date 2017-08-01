@@ -63,10 +63,10 @@ subroutine coord_sp(Toe,WN,ec,A0_5,Omega_0,i_0,w,M_0,delta_n,Omega_vel,IDOT,C_uc
     write(*,*) "3. t = ", t
 
     n = n_0 + delta_n
-    write(*,*) "4. n = ", t
+    write(*,*) "4. n = ", n
 
     M = M_0 + n*t
-    write(*,*) "5. M = ", t
+    write(*,*) "5. M = ", M
 
     call E_calc(M, ec, E)
     write(*,*) "6. E = ", E
